@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Cairo:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Al Mulla Engineering Design System */
+    --background: 0 0% 100%;
+    --foreground: 220 20% 10%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+    
+    /* Primary Green - #00b049 */
+    --primary: 145 100% 35%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 145 80% 45%;
+    
+    /* Secondary - Light Gray */
+    --secondary: 210 20% 97%;
+    --secondary-foreground: 220 20% 10%;
+    
+    --muted: 210 15% 95%;
+    --muted-foreground: 220 10% 45%;
+    
+    --accent: 145 100% 35%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 145 100% 35%;
+    
+    --radius: 0.5rem;
+    
+    /* Engineering Theme Colors */
+    --engineering-dark: 220 25% 12%;
+    --engineering-steel: 220 15% 35%;
+    --engineering-blueprint: 210 80% 55%;
+    --engineering-grid: 220 15% 92%;
+    
+    /* Shadows & Effects */
+    --shadow-soft: 0 4px 20px -4px hsl(220 25% 12% / 0.08);
+    --shadow-medium: 0 8px 30px -6px hsl(220 25% 12% / 0.12);
+    --shadow-glow: 0 0 40px hsl(145 100% 35% / 0.2);
+    
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 20% 10%;
+    --sidebar-primary: 145 100% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 97%;
+    --sidebar-accent-foreground: 220 20% 10%;
+    --sidebar-border: 220 15% 90%;
+    --sidebar-ring: 145 100% 35%;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 210 20% 98%;
+    
+    --card: 220 25% 10%;
+    --card-foreground: 210 20% 98%;
+    
+    --popover: 220 25% 10%;
+    --popover-foreground: 210 20% 98%;
+    
+    --primary: 145 90% 42%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 145 80% 50%;
+    
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 210 20% 98%;
+    
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 15% 60%;
+    
+    --accent: 145 90% 42%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 145 90% 42%;
+    
+    --engineering-dark: 220 25% 95%;
+    --engineering-steel: 220 15% 70%;
+    --engineering-blueprint: 210 80% 60%;
+    --engineering-grid: 220 20% 15%;
+    
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 145 90% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 145 90% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  /* RTL Support */
+  [dir="rtl"] {
+    font-family: 'Cairo', sans-serif;
+  }
+}
+
+@layer components {
+  /* Engineering Background Pattern */
+  .engineering-bg {
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(var(--primary) / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(var(--engineering-blueprint) / 0.02) 0%, transparent 50%);
+  }
+  
+  /* Blueprint Grid Background */
+  .blueprint-grid {
+    background-image: 
+      linear-gradient(hsl(var(--engineering-grid)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--engineering-grid)) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  /* Text Gradient */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent;
+  }
+  
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300;
+    @apply hover:shadow-glow hover:-translate-y-0.5;
+  }
+  
+  .btn-outline-primary {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground;
+    @apply transition-all duration-300;
+  }
+  
+  /* Card Styles */
+  .card-engineering {
+    @apply bg-card rounded-xl border border-border/50;
+    @apply shadow-soft hover:shadow-medium transition-all duration-500;
+  }
+  
+  /* Section Styles */
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+  
+  /* Animated Underline */
+  .animated-underline {
+    @apply relative;
+  }
+  
+  .animated-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+  
+  .animated-underline:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  /* Custom Shadows */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Animation Delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  
+  /* Custom Scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-muted rounded-full;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full hover:bg-primary/50 transition-colors;
+  }
+}
